@@ -1,0 +1,17 @@
+[SddmGreeterTheme]
+Name=Fuwarch Kawaii
+Name[pt_BR]=Fuwarch Kawaii
+Description=Kawaii login theme of Fuwarch Linux (Catppuccin Mocha + pink accents)
+Description[pt_BR]=Tema de login kawaii do Fuwarch Linux (Catppuccin Mocha + acentos rosa)
+Author=Fuwarch Linux Project (Rukafuu)
+Copyright=(c) 2026 Rukafuu
+License=MIT
+Type=sddm-theme
+Version=0.1.0
+Website=https://github.com/Rukafuu/fuwarch-docs
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=fuwarch-kawaii
+Theme-API=2.0
+QtVersion=6
