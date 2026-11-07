@@ -35,6 +35,11 @@ Current=fuwarch-kawaii
 - **Botões de energia invisíveis no test-mode:** sem daemon do SDDM,
   `sddm.canReboot`/`canPowerOff` retornam false — é o esperado; no greeter
   real eles aparecem.
+- **⚠️ Caminho da logo é hardcoded da máquina de dev:**
+  `file:///home/luke/Imagens/fuwarch.png`. Para produção (ISO), a logo deve
+  viver DENTRO do diretório do tema e entrar via `theme.conf: logo=`, empacotada
+  no fuwarch-core. `preview.png` contém arte da Usami (CC BY-NC-ND 4.0 —
+  © Rukafuu, proibido uso comercial/derivações).
 - **Arte da Usami:** assets CC BY-NC-ND 4.0 — proibido uso comercial e
   derivações (doc 01, D-010). Entra via `theme.conf: logo=`.
 - **v0.1:** lista de usuários não implementada (login por campo de texto);

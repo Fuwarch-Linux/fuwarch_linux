@@ -3,6 +3,7 @@
 // Paleta: Catppuccin Mocha + acentos rosa (doc 01, D-003)
 import QtQuick
 import QtQuick.Controls.Basic as QQC2
+import Qt5Compat.GraphicalEffects
 import SddmComponents 2.0
 
 Rectangle {
@@ -98,15 +99,25 @@ Rectangle {
         dateFont.pixelSize: 14
     }
 
-    // ---- Card de login ----
+    // ---- Card de login (glassmorphism + glow neon rosa) ----
+    DropShadow {
+        anchors.fill: card
+        source: card
+        color: Qt.rgba(root.cPink.r, root.cPink.g, root.cPink.b, 0.45)
+        radius: 16
+        samples: 33
+        spread: 0.3
+        transparentBorder: true
+    }
+
     Rectangle {
         id: card
         width: 380
-        height: 430
+        height: 540
         anchors.centerIn: parent
         radius: 24
-        color: "#e6181825"
-        border.color: Qt.rgba(root.cPink.r, root.cPink.g, root.cPink.b, 0.35)
+        color: Qt.rgba(30 / 255, 30 / 255, 46 / 255, 0.7)
+        border.color: root.cPink
         border.width: 1
 
         function doLogin() {
@@ -123,6 +134,14 @@ Rectangle {
             anchors.fill: parent
             anchors.margins: 34
             spacing: 18
+
+            // Logo da Usami (asset CC BY-NC-ND 4.0 — doc 01, D-010)
+            Image {
+                width: parent.width
+                height: 96
+                source: "file:///home/luke/Imagens/fuwarch.png"
+                fillMode: Image.PreserveAspectFit
+            }
 
             // Wordmark
             Text {
@@ -145,13 +164,13 @@ Rectangle {
 
             Item { width: 1; height: 6 }
 
-            // Usuário
+            // Usuário (pílula)
             Rectangle {
                 width: parent.width
                 height: 46
-                radius: 14
+                radius: 23
                 color: root.cSurface0
-                border.color: userField.activeFocus ? root.cPink : root.cSurface1
+                border.color: userField.activeFocus ? "#FF5E7E" : root.cSurface1
                 border.width: userField.activeFocus ? 2 : 1
                 QQC2.TextField {
                     id: userField
@@ -170,13 +189,13 @@ Rectangle {
                 }
             }
 
-            // Senha
+            // Senha (pílula)
             Rectangle {
                 width: parent.width
                 height: 46
-                radius: 14
+                radius: 23
                 color: root.cSurface0
-                border.color: passField.activeFocus ? root.cPink : root.cSurface1
+                border.color: passField.activeFocus ? "#FF5E7E" : root.cSurface1
                 border.width: passField.activeFocus ? 2 : 1
                 QQC2.TextField {
                     id: passField
@@ -196,11 +215,11 @@ Rectangle {
                 }
             }
 
-            // Botão login
+            // Botão login (pílula rosa pastel, texto dark alto contraste)
             Rectangle {
                 width: parent.width
                 height: 48
-                radius: 14
+                radius: 24
                 color: loginMouse.containsPress ? Qt.lighter(root.cPink, 0.88)
                      : (loginMouse.containsMouse ? Qt.lighter(root.cPink, 1.08) : root.cPink)
                 Text {
