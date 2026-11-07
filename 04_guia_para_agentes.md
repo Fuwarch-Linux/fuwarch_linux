@@ -8,14 +8,18 @@ Fuwarch Linux — distro baseada em Arch para o público otaku.
 Escopo e decisões: ver `01_diretrizes_projeto.md` (fonte da verdade).
 
 ## Estado atual (2026-11-06)
-- **Fase:** 0 — Fundação. Documentação v0.2 aprovada e publicada em repo
-  público (`Rukafuu/fuwarch-docs`).
+- **Fase:** 0 — Fundação concluída; prototipagem visual iniciada.
+- Documentação v0.2 aprovada e publicada em repo público
+  (`Rukafuu/fuwarch-docs`).
+- **Protótipo KDE aplicado e validado** na máquina de dev: tema de cores
+  "Fuwarch Kawaii Mocha" ativo na sessão Plasma 6.7.4/Wayland
+  (`prototypes/kde/`). Rollback documentado: `plasma-apply-colorscheme BreezeDark`.
 - Nenhuma build de ISO ainda. Nenhum erro registrado (doc 03 vazio).
 - Pendências abertas: **P-004** (infra fuwarch-core), **P-005** (empacotar
-  fonte M PLUS Rounded).
-- Próximo passo definido: **protótipo de tematização KDE Plasma** em
-  `prototypes/kde/` (esquema de cores Catppuccin Mocha kawaii + Konsole),
-  testável na máquina de dev (Nyarch Linux, Plasma 6.7.4, Wayland, SDDM).
+  fonte M PLUS Rounded — não instalada na máquina de dev).
+- Próximos passos sugeridos (protótipo → Fase 1): Starship.toml Fuwarch,
+  tema SDDM, look-and-feel completo (wallpaper/cursor/pack), tema Latte
+  (claro) para o switch rápido, e depois o build archiso + Calamares.
 
 ## Ambiente de desenvolvimento (máquina do mantenedor)
 - SO base: Nyarch Linux (Arch-based, pacman)

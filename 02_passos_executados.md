@@ -8,5 +8,6 @@
 |---|---|---|---|---|---|
 | A-001 | 2026-11-06 | Rukafuu + Agente arquiteto | Entrevista de fundação (4 pilares) e consolidação do escopo no doc 01 v0.1 | Revisão do mantenedor — aprovado | 01_diretrizes_projeto.md |
 | A-002 | 2026-11-06 | Rukafuu + Agente arquiteto | Resolução das pendências P-001/P-002/P-003 (licenças CC BY-NC-ND 4.0 + MIT; ícones Tela Circle pastel; wizard em Tauri); doc 01 → v0.2; criação do repo público `Rukafuu/fuwarch-docs` e versionamento inicial dos 4 docs + README | Push validado no GitHub (commit inicial) | 01, 02, 03, 04, README.md |
+| A-003 | 2026-11-06 | Rukafuu + Agente arquiteto | Protótipo KDE "Fuwarch Kawaii Mocha": esquema de cores Plasma 6 (Catppuccin Mocha + acentos rosa/mauve), esquema de cores Konsole + perfil `Fuwarch`, e `install.sh` user-level | Instalado em `~/.local/share/{color-schemes,konsole}`; reconhecido por `plasma-apply-colorscheme --list-schemes`; **aplicado com sucesso** na sessão Plasma 6.7.4/Wayland da máquina de dev (confirmado no `kdeglobals`) | prototypes/kde/{README.md, colors/FuwarchKawaiiMocha.colors, konsole/*, install.sh} |
 
 <!-- Próximos registros: cada script, pacote, build de ISO ou tema que passar em teste ganha uma linha aqui. -->
