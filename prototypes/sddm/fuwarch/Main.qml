@@ -110,86 +110,91 @@ Rectangle {
         transparentBorder: true
     }
 
+    // Fontes do avatar circular (padrão Qt docs: source/mask invisíveis)
+    Image {
+        id: avatarSource
+        width: 112
+        height: 112
+        source: "file:///home/luke/Imagens/fuwarch.png"
+        fillMode: Image.PreserveAspectCrop
+        visible: false
+    }
+    Rectangle {
+        id: avatarMask
+        width: 112
+        height: 112
+        radius: 56
+        visible: false
+    }
+
     Rectangle {
         id: card
         width: 380
-        height: 540
+        height: 320
         anchors.centerIn: parent
         radius: 24
         color: Qt.rgba(30 / 255, 30 / 255, 46 / 255, 0.7)
         border.color: root.cPink
         border.width: 1
 
+        // Usuário alvo — API UserModel: count/lastIndex/data (ref. silent-nyarch;
+        // roles: 257=name, 258=realName)
+        readonly property int _userRow: userModel.count > 0
+            ? (userModel.lastIndex >= 0 ? userModel.lastIndex : 0) : -1
+        readonly property string loginName: _userRow >= 0
+            ? (userModel.data(userModel.index(_userRow, 0), 257) || "") : ""
+        readonly property string displayName: {
+            if (_userRow < 0)
+                return "";
+            var real = userModel.data(userModel.index(_userRow, 0), 258);
+            return (real && real !== "") ? real : loginName;
+        }
+
         function doLogin() {
-            if (userField.text === "") {
-                userField.forceActiveFocus();
-            } else if (passField.text === "") {
+            if (passField.text === "") {
                 passField.forceActiveFocus();
             } else {
-                sddm.login(userField.text, passField.text, sessionCombo.currentIndex);
+                sddm.login(card.loginName, passField.text, sessionCombo.currentIndex);
             }
         }
 
         Column {
             anchors.fill: parent
-            anchors.margins: 34
-            spacing: 18
+            anchors.margins: 30
+            spacing: 16
 
-            // Logo da Usami (asset CC BY-NC-ND 4.0 — doc 01, D-010)
-            Image {
-                width: parent.width
-                height: 96
-                source: "file:///home/luke/Imagens/fuwarch.png"
-                fillMode: Image.PreserveAspectFit
-            }
-
-            // Wordmark
-            Text {
-                width: parent.width
-                horizontalAlignment: Text.AlignHCenter
-                text: "Fuwarch"
-                color: root.cPink
-                font.family: root.fontName
-                font.weight: Font.ExtraBold
-                font.pixelSize: 36
-            }
-            Text {
-                width: parent.width
-                horizontalAlignment: Text.AlignHCenter
-                text: "fuwafuwa login ✿"
-                color: root.cSubtext
-                font.family: root.fontName
-                font.pixelSize: 13
-            }
-
-            Item { width: 1; height: 6 }
-
-            // Usuário (pílula)
-            Rectangle {
-                width: parent.width
-                height: 46
-                radius: 23
-                color: root.cSurface0
-                border.color: userField.activeFocus ? "#FF5E7E" : root.cSurface1
-                border.width: userField.activeFocus ? 2 : 1
-                QQC2.TextField {
-                    id: userField
+            // Avatar circular da Usami (asset CC BY-NC-ND 4.0 — doc 01, D-010)
+            Item {
+                width: 112
+                height: 112
+                anchors.horizontalCenter: parent.horizontalCenter
+                OpacityMask {
                     anchors.fill: parent
-                    anchors.leftMargin: 16
-                    anchors.rightMargin: 16
-                    background: Item {}
-                    color: root.cText
-                    selectionColor: root.cPink
-                    selectedTextColor: root.cCrust
-                    placeholderText: "usuário"
-                    font.family: root.fontName
-                    font.pixelSize: 14
-                    onAccepted: card.doLogin()
-                    Component.onCompleted: forceActiveFocus()
+                    source: avatarSource
+                    maskSource: avatarMask
+                }
+                Rectangle {
+                    anchors.fill: parent
+                    radius: 56
+                    color: "transparent"
+                    border.color: root.cPink
+                    border.width: 2
                 }
             }
 
-            // Senha (pílula)
+            // Nome do usuário (negrito, maior, centralizado)
+            Text {
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideRight
+                text: card.displayName !== "" ? card.displayName : "usuário"
+                color: root.cText
+                font.family: root.fontName
+                font.bold: true
+                font.pixelSize: 18
+            }
+
+            // Senha (única entrada; seta circular alinhada à direita)
             Rectangle {
                 width: parent.width
                 height: 46
@@ -200,8 +205,8 @@ Rectangle {
                 QQC2.TextField {
                     id: passField
                     anchors.fill: parent
-                    anchors.leftMargin: 16
-                    anchors.rightMargin: 16
+                    anchors.leftMargin: 18
+                    anchors.rightMargin: 56
                     background: Item {}
                     color: root.cText
                     selectionColor: root.cPink
@@ -212,30 +217,30 @@ Rectangle {
                     font.family: root.fontName
                     font.pixelSize: 14
                     onAccepted: card.doLogin()
+                    Component.onCompleted: forceActiveFocus()
                 }
-            }
-
-            // Botão login (pílula rosa pastel, texto dark alto contraste)
-            Rectangle {
-                width: parent.width
-                height: 48
-                radius: 24
-                color: loginMouse.containsPress ? Qt.lighter(root.cPink, 0.88)
-                     : (loginMouse.containsMouse ? Qt.lighter(root.cPink, 1.08) : root.cPink)
-                Text {
-                    anchors.centerIn: parent
-                    text: "✿ Entrar"
-                    color: root.cCrust
-                    font.family: root.fontName
-                    font.bold: true
-                    font.pixelSize: 15
-                }
-                MouseArea {
-                    id: loginMouse
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: card.doLogin()
+                Rectangle {
+                    width: 34
+                    height: 34
+                    radius: 17
+                    anchors.right: parent.right
+                    anchors.rightMargin: 6
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: goMouse.containsMouse ? Qt.lighter(root.cPink, 1.1) : root.cPink
+                    Text {
+                        anchors.centerIn: parent
+                        text: "→"
+                        color: root.cCrust
+                        font.bold: true
+                        font.pixelSize: 16
+                    }
+                    MouseArea {
+                        id: goMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: card.doLogin()
+                    }
                 }
             }
 

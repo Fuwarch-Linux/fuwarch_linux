@@ -42,10 +42,13 @@ Current=fuwarch-kawaii
   © Rukafuu, proibido uso comercial/derivações).
 - **Arte da Usami:** assets CC BY-NC-ND 4.0 — proibido uso comercial e
   derivações (doc 01, D-010). Entra via `theme.conf: logo=`.
-- **v0.1:** lista de usuários não implementada (login por campo de texto);
-  sessão inicia no índice 0; sem LayoutBox de teclado. Melhorias em v0.2.
-- **preview.png:** ainda não existe (metadata referencia; gerar screenshot
-  do test-mode antes de publicar o tema no fuwarch-core).
+- **v0.1 (greeter de usuário):** avatar circular (OpacityMask) + nome do
+  usuário via `userModel` (roles 257=name, 258=realName, padrão confirmado
+  no tema silent-nyarch) + campo de senha com botão seta circular. Login
+  usa `userModel.lastIndex` — **limitação**: com múltiplos usuários, só o
+  último usuário é autenticável; seletor de usuários fica para a v0.2.
+- **preview.png:** gerado via screenshot do test-mode. Contém arte da Usami
+  (CC BY-NC-ND 4.0 — © Rukafuu, proibido uso comercial/derivações).
 
 ## Rollback (produção)
 
