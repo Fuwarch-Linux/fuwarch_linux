@@ -102,7 +102,7 @@ Rectangle {
     Rectangle {
         id: card
         width: 380
-        height: 470
+        height: 430
         anchors.centerIn: parent
         radius: 24
         color: "#e6181825"

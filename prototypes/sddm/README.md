@@ -28,6 +28,13 @@ Current=fuwarch-kawaii
   fontes em `~/.local/share/fonts`. Na ISO, a fonte precisa ser instalada
   **system-wide** (pacote no fuwarch-core). Em `--test-mode` a fonte aparece
   porque o teste roda com o usuário atual.
+- **Validação visual (receita testada):** rodar com `QT_QPA_PLATFORM=xcb`
+  (janela flutuante via XWayland) + capturar com
+  `spectacle -b -n -o preview.png`. A janela do test-mode pode abrir SEM
+  foco/atrás das outras — não assuma que falhou; verifique por screenshot.
+- **Botões de energia invisíveis no test-mode:** sem daemon do SDDM,
+  `sddm.canReboot`/`canPowerOff` retornam false — é o esperado; no greeter
+  real eles aparecem.
 - **Arte da Usami:** assets CC BY-NC-ND 4.0 — proibido uso comercial e
   derivações (doc 01, D-010). Entra via `theme.conf: logo=`.
 - **v0.1:** lista de usuários não implementada (login por campo de texto);
