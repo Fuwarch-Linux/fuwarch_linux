@@ -64,7 +64,7 @@ VTuber, edição de vídeo).
 | Display manager | **SDDM** tematizado |
 | Wallpapers | Pack Usami / anime |
 | Terminal | **Starship** prompt pré-configurado |
-| Fonte padrão | **M PLUS Rounded 1c** (+ Nerd Fonts para mono) |
+| Fonte padrão | **M PLUS Rounded 1c** (+ Nerd Fonts para mono) — ⚠️ family name interno dos TTFs é **`Rounded Mplus 1c`**; usar esse nome nas configs do sistema (doc 03, E-001) |
 | Ícones | **Tela Circle (variante pastel)** — decidido (D-008); conversa com as curvas da M PLUS Rounded e a estética kawaii |
 
 ### 3.4 Idioma

@@ -1,0 +1,73 @@
+# Fuwarch Linux — prompt Starship "Fuwarch Kawaii"
+# Protótipo: requer `starship` instalado + init no shell.
+# Instalação (ISO final): via fuwarch-core em /etc/skel/.config/starship.toml
+add_newline = true
+
+format = """
+$directory$git_branch$git_status$nodejs$python$rust$golang$cmd_duration
+$character"""
+
+palette = "fuwarch_mocha"
+
+[palettes.fuwarch_mocha]
+base = "#1e1e2e"
+surface0 = "#313244"
+text = "#cdd6f4"
+lavender = "#b4befe"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+sky = "#89dceb"
+green = "#a6e3a1"
+red = "#f38ba8"
+peach = "#fab387"
+yellow = "#f9e2af"
+
+[palettes.fuwarch_latte]
+base = "#eff1f5"
+surface0 = "#ccd0da"
+text = "#4c4f69"
+lavender = "#7287fd"
+pink = "#ea76cb"
+mauve = "#8839ef"
+sky = "#04a5e5"
+green = "#40a02b"
+red = "#d20f39"
+peach = "#fe640b"
+yellow = "#df8e1d"
+
+[character]
+success_symbol = "[❯](pink bold)"
+error_symbol = "[❯](red bold)"
+
+[directory]
+style = "lavender bold"
+truncation_length = 4
+truncate_to_repo = true
+read_only = " 🔒"
+
+[git_branch]
+symbol = "🌸 "
+style = "pink"
+
+[git_status]
+style = "peach"
+
+[cmd_duration]
+min_time = 2000
+format = "[ $duration](yellow)"
+
+[nodejs]
+symbol = " "
+style = "green"
+
+[python]
+symbol = " "
+style = "sky"
+
+[rust]
+symbol = " "
+style = "peach"
+
+[golang]
+symbol = " "
+style = "sky"
