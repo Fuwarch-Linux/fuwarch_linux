@@ -13,7 +13,8 @@ Escopo e decisões: ver `01_diretrizes_projeto.md` (fonte da verdade).
   (`Rukafuu/fuwarch-docs`).
 - **Protótipo SDDM validado** (`prototypes/sddm/fuwarch/`): tema v0.1
   clean-room (MIT), testado com `sddm-greeter-qt6 --test-mode` — carrega
-  sem erros QML. Instalação real (sudo) e preview.png pendentes.
+  sem erros QML; render verificado por screenshot; `preview.png` incluído.
+  Instalação real (sudo) pendente.
 - **Protótipo KDE aplicado e validado** na máquina de dev:
   - Tema escuro "Fuwarch Kawaii Mocha" **ativo** na sessão Plasma 6.7.4/Wayland.
   - Tema claro "FuwarchKawaiiLatte" criado; **switch dark/light validado**.
