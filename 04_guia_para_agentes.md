@@ -28,9 +28,10 @@ Escopo e decisões: ver `01_diretrizes_projeto.md` (fonte da verdade).
   em qualquer config de fonte).
 - Pendências abertas: **P-004** (infra fuwarch-core), **P-005** (fonte M PLUS
   Rounded p/ ISO), **P-006** (arte da Usami p/ avatar do ISO).
-- Próximos passos sugeridos (protótipo → Fase 1): build do ISO archiso
-  (precisa de `sudo` — veja iso/fuwarch/README.md), integração Calamares,
-  BTRFS+Snapper na instalação, Plymouth.
+- Próximos passos sugeridos (Fase 1): build do ISO archiso
+  (precisa de `sudo` — veja iso/fuwarch/README.md), BTRFS+Snapper na
+  instalação alvo, Plymouth. (**Calamares já configurado** em
+  `airootfs/etc/calamares/` — pronto para incluir na ISO).
 
 ## Ambiente de desenvolvimento (máquina do mantenedor)
 - SO base: Nyarch Linux (Arch-based, pacman)

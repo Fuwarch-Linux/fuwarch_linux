@@ -50,3 +50,5 @@ wget
 curl
 xdg-user-dirs
 xdg-desktop-portal-kde
+
+calamares

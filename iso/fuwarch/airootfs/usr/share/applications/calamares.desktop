@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Instalar Fuwarch Linux
+GenericName=Instalador
+Comment=Instala o Fuwarch Linux no computador
+Exec=calamares
+Icon=calamares
+Terminal=false
+Type=Application
+Categories=System;Settings;
+Keywords=install;calamares;fuwarch;

@@ -1,0 +1,98 @@
+/* Fuwarch Linux - Calamares QSS theme (Catppuccin Mocha kawaii) */
+* {
+    font-family: "M PLUS Rounded 1c", "Noto Sans", sans-serif;
+    font-size: 13px;
+}
+
+QWidget {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    selection-background-color: #f5c2e7;
+    selection-color: #1e1e2e;
+}
+
+QPushButton {
+    background-color: #f5c2e7;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #f2cdcd;
+}
+
+QPushButton:pressed {
+    background-color: #eba0ac;
+}
+
+QPushButton:disabled {
+    background-color: #45475a;
+    color: #6c7086;
+}
+
+QLineEdit, QTextEdit, QComboBox, QSpinBox {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+QLineEdit:focus, QTextEdit:focus, QComboBox:focus {
+    border: 1px solid #f5c2e7;
+}
+
+QHeaderView::section {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: none;
+    padding: 6px;
+}
+
+QAbstractItemView {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    selection-background-color: #f5c2e7;
+    selection-color: #1e1e2e;
+}
+
+QProgressBar {
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    background-color: #313244;
+    text-align: center;
+    color: #cdd6f4;
+}
+
+QProgressBar::chunk {
+    background-color: #f5c2e7;
+    border-radius: 7px;
+}
+
+QLabel#titleLabel {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f5c2e7;
+}
+
+QLabel#subtitleLabel {
+    font-size: 15px;
+    color: #b4befe;
+}
+
+QToolButton {
+    background-color: transparent;
+    color: #cdd6f4;
+    border: none;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+QToolButton:hover {
+    background-color: #313244;
+}
