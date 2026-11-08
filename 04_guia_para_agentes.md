@@ -26,11 +26,11 @@ Escopo e decisões: ver `01_diretrizes_projeto.md` (fonte da verdade).
 - Rollback geral documentado em `prototypes/kde/README.md`.
 - Erros registrados: **E-001** (naming da fonte — ler doc 03 antes de tocar
   em qualquer config de fonte).
-- Pendências abertas: **P-004** (infra fuwarch-core), **P-005** (empacotar
-  fonte p/ ISO — instalada só na máquina de dev).
-- Próximos passos sugeridos (protótipo → Fase 1): instalar/testar starship,
-  tema SDDM, look-and-feel completo (wallpaper/cursor/pack), tema de ícones
-  Tela Circle pastel, e depois o build archiso + Calamares.
+- Pendências abertas: **P-004** (infra fuwarch-core), **P-005** (fonte M PLUS
+  Rounded p/ ISO), **P-006** (arte da Usami p/ avatar do ISO).
+- Próximos passos sugeridos (protótipo → Fase 1): build do ISO archiso
+  (precisa de `sudo` — veja iso/fuwarch/README.md), integração Calamares,
+  BTRFS+Snapper na instalação, Plymouth.
 
 ## Ambiente de desenvolvimento (máquina do mantenedor)
 - SO base: Nyarch Linux (Arch-based, pacman)

@@ -155,6 +155,7 @@ VTuber, edição de vídeo).
 | P-003 | Stack do wizard | ✅ **Resolvida (2026-11-06)** — Tauri (D-009) | — |
 | P-004 | Infra do repo fuwarch-core (hosting do pacman repo + chaves de assinatura) | 🔴 Aberta | Bloqueia empacotamento próprio |
 | P-005 | Empacotamento da fonte **M PLUS Rounded 1c** no fuwarch-core/ISO (não presente na máquina de dev) | 🔴 Aberta | Bloqueia look-and-feel final |
+| P-006 | Arte da Usami para o ISO (avatar real no SDDM; atualmente o ISO carrega wordmark "Fuwarch" sem imagem) | 🔴 Aberta | ISO funciona sem ela (fallback wordmark) |
 
 ## 10. Roadmap (fases)
 
