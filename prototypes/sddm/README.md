@@ -42,11 +42,16 @@ Current=fuwarch-kawaii
   © Rukafuu, proibido uso comercial/derivações).
 - **Arte da Usami:** assets CC BY-NC-ND 4.0 — proibido uso comercial e
   derivações (doc 01, D-010). Entra via `theme.conf: logo=`.
-- **v0.1 (greeter de usuário):** avatar circular (OpacityMask) + nome do
-  usuário via `userModel` (roles 257=name, 258=realName, padrão confirmado
-  no tema silent-nyarch) + campo de senha com botão seta circular. Login
-  usa `userModel.lastIndex` — **limitação**: com múltiplos usuários, só o
-  último usuário é autenticável; seletor de usuários fica para a v0.2.
+- **v0.1 (greeter de usuário):** avatar circular (OpacityMask) + nome via
+  `userModel` (roles 257=name, 258=realName, 260=icon — padrão confirmado no
+  tema silent-nyarch) + senha com botão seta circular. Card em glassmorphism
+  com glow rosa (DropShadow do qt6-5compat — este funciona no greeter).
+- **v0.2 (seletor de usuários):** chevron `⌄` ao lado do nome (só com >1
+  usuário) abre **dropdown em Rectangle puro** — NUNCA `QQC2.Popup` (doc 03,
+  E-002: trava o render em tela preta silenciosa). Flag `forceUserSelector`
+  no `theme.conf` força o seletor para testes com 1 usuário (auto-abre para
+  screenshot). Avatar continua a Usami (identidade da distro); a troca afeta
+  nome/login. Ícones reais dos usuários (role 260) ficam para v0.3.
 - **preview.png:** gerado via screenshot do test-mode. Contém arte da Usami
   (CC BY-NC-ND 4.0 — © Rukafuu, proibido uso comercial/derivações).
 

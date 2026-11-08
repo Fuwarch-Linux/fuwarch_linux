@@ -138,17 +138,20 @@ Rectangle {
         border.width: 1
 
         // Usuário alvo — API UserModel: count/lastIndex/data (ref. silent-nyarch;
-        // roles: 257=name, 258=realName)
-        readonly property int _userRow: userModel.count > 0
+        // roles: 257=name, 258=realName, 260=icon). userRow é mutável (seletor v0.2)
+        property int userRow: userModel.count > 0
             ? (userModel.lastIndex >= 0 ? userModel.lastIndex : 0) : -1
-        readonly property string loginName: _userRow >= 0
-            ? (userModel.data(userModel.index(_userRow, 0), 257) || "") : ""
+        readonly property string loginName: userRow >= 0
+            ? (userModel.data(userModel.index(userRow, 0), 257) || "") : ""
         readonly property string displayName: {
-            if (_userRow < 0)
+            if (userRow < 0)
                 return "";
-            var real = userModel.data(userModel.index(_userRow, 0), 258);
+            var real = userModel.data(userModel.index(userRow, 0), 258);
             return (real && real !== "") ? real : loginName;
         }
+        // Debug/teste: força o chevron e o popup mesmo com 1 usuário (theme.conf)
+        readonly property bool multiUser: userModel.count > 1
+            || config.forceUserSelector === "true"
 
         function doLogin() {
             if (passField.text === "") {
@@ -182,16 +185,43 @@ Rectangle {
                 }
             }
 
-            // Nome do usuário (negrito, maior, centralizado)
-            Text {
+            // Nome do usuário (negrito, maior, centralizado) + chevron do seletor
+            Item {
                 width: parent.width
-                horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideRight
-                text: card.displayName !== "" ? card.displayName : "usuário"
-                color: root.cText
-                font.family: root.fontName
-                font.bold: true
-                font.pixelSize: 18
+                height: 28
+
+                Text {
+                    anchors.centerIn: parent
+                    elide: Text.ElideRight
+                    text: card.displayName !== "" ? card.displayName : "usuário"
+                    color: root.cText
+                    font.family: root.fontName
+                    font.bold: true
+                    font.pixelSize: 18
+                }
+                Rectangle {
+                    id: userSwitch
+                    width: 26
+                    height: 26
+                    radius: 13
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: card.multiUser
+                    color: switchMouse.containsMouse ? root.cSurface1 : root.cSurface0
+                    Text {
+                        anchors.centerIn: parent
+                        text: "⌄"
+                        color: root.cSubtext
+                        font.pixelSize: 14
+                    }
+                    MouseArea {
+                        id: switchMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: userDropdown.visible = !userDropdown.visible
+                    }
+                }
             }
 
             // Senha (única entrada; seta circular alinhada à direita)
@@ -255,6 +285,85 @@ Rectangle {
                 font.family: root.fontName
                 font.pixelSize: 12
             }
+        }
+
+        // Dropdown de seleção de usuários (v0.2) — Rectangle puro, SEM QQC2.Popup
+        // (greeter não é ApplicationWindow: Popup sem overlay trava o render)
+        Rectangle {
+            id: userDropdown
+            x: 30
+            y: 192
+            width: 320
+            height: Math.min(220, userList.contentHeight + 16)
+            radius: 16
+            color: root.cMantle
+            border.color: root.cPink
+            border.width: 1
+            visible: false
+            z: 10
+            Component.onCompleted: visible = (config.forceUserSelector === "true")
+
+            ListView {
+                id: userList
+                anchors.fill: parent
+                anchors.margins: 8
+                clip: true
+                spacing: 4
+                model: userModel
+                Component.onCompleted: currentIndex = Math.max(0, card.userRow)
+                delegate: QQC2.ItemDelegate {
+                    id: userDelegate
+                    width: userList.width
+                    height: 48
+                    onClicked: {
+                        card.userRow = index;
+                        userList.currentIndex = index;
+                        userDropdown.visible = false;
+                        passField.forceActiveFocus();
+                    }
+                    background: Rectangle {
+                        radius: 12
+                        color: userDelegate.hovered || index === card.userRow
+                               ? root.cSurface1 : "transparent"
+                    }
+                    contentItem: Item {
+                        Rectangle {
+                            width: 36
+                            height: 36
+                            radius: 18
+                            x: 4
+                            anchors.verticalCenter: parent.verticalCenter
+                            color: root.cPink
+                            opacity: 0.3
+                            Text {
+                                anchors.centerIn: parent
+                                text: "✿"
+                                color: root.cCrust
+                                font.pixelSize: 15
+                            }
+                        }
+                        Text {
+                            x: 52
+                            width: parent.width - 60
+                            anchors.verticalCenter: parent.verticalCenter
+                            elide: Text.ElideRight
+                            text: (model.realName && model.realName !== "") ? model.realName : model.name
+                            color: root.cText
+                            font.family: root.fontName
+                            font.pixelSize: 14
+                            font.bold: index === card.userRow
+                        }
+                    }
+                }
+            }
+        }
+
+        // Fecha o dropdown ao clicar em qualquer lugar do card fora dele
+        MouseArea {
+            z: 5
+            anchors.fill: parent
+            visible: userDropdown.visible
+            onClicked: userDropdown.visible = false
         }
     }
 

@@ -11,9 +11,10 @@ Escopo e decisões: ver `01_diretrizes_projeto.md` (fonte da verdade).
 - **Fase:** 0 — Fundação concluída; prototipagem visual avançada.
 - Documentação v0.2 aprovada e publicada em repo público
   (`Rukafuu/fuwarch-docs`).
-- **Protótipo SDDM validado** (`prototypes/sddm/fuwarch/`): tema v0.1
-  clean-room (MIT), testado com `sddm-greeter-qt6 --test-mode` — carrega
-  sem erros QML; render verificado por screenshot; `preview.png` incluído.
+- **Protótipo SDDM validado** (`prototypes/sddm/fuwarch/`): v0.2 com
+  greeter de usuário (avatar Usami circular, nome do userModel, senha +
+  seta) e seletor multi-usuário (dropdown puro — **nunca QQC2.Popup**, ver
+  doc 03 E-002). Render verificado por screenshot; `preview.png` incluído.
   Instalação real (sudo) pendente.
 - **Protótipo KDE aplicado e validado** na máquina de dev:
   - Tema escuro "Fuwarch Kawaii Mocha" **ativo** na sessão Plasma 6.7.4/Wayland.
