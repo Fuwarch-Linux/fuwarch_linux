@@ -1,0 +1,13 @@
+[Unit]
+Description=Fuwarch live session setup (cria o usuário 'fuwa')
+Before=display-manager.service
+ConditionPathExists=!/run/fuwarch-setup-done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/live-setup.sh
+ExecStartPost=/bin/touch /run/fuwarch-setup-done
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
