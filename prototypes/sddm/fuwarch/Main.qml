@@ -110,12 +110,13 @@ Rectangle {
         transparentBorder: true
     }
 
-    // Fontes do avatar circular (padrão Qt docs: source/mask invisíveis)
+    // Fontes do avatar circular (padrão Qt docs: source/mask invisíveis).
+    // ISO-ready: caminho vem do theme.conf (logo=); sem logo -> fallback wordmark
     Image {
         id: avatarSource
         width: 112
         height: 112
-        source: "file:///home/luke/Imagens/fuwarch.png"
+        source: config.logo ? config.logo : ""
         fillMode: Image.PreserveAspectCrop
         visible: false
     }
@@ -166,15 +167,19 @@ Rectangle {
             anchors.margins: 30
             spacing: 16
 
-            // Avatar circular da Usami (asset CC BY-NC-ND 4.0 — doc 01, D-010)
+            // Avatar circular da Usami (asset CC BY-NC-ND 4.0 — doc 01, D-010);
+            // sem logo configurada -> fallback com wordmark
             Item {
                 width: 112
                 height: 112
                 anchors.horizontalCenter: parent.horizontalCenter
+                readonly property bool avatarReady: avatarSource.status === Image.Ready
+
                 OpacityMask {
                     anchors.fill: parent
                     source: avatarSource
                     maskSource: avatarMask
+                    visible: parent.avatarReady
                 }
                 Rectangle {
                     anchors.fill: parent
@@ -182,6 +187,16 @@ Rectangle {
                     color: "transparent"
                     border.color: root.cPink
                     border.width: 2
+                    visible: parent.avatarReady
+                }
+                Text {
+                    anchors.centerIn: parent
+                    visible: !parent.avatarReady
+                    text: "Fuwarch"
+                    color: root.cPink
+                    font.family: root.fontName
+                    font.weight: Font.ExtraBold
+                    font.pixelSize: 30
                 }
             }
 
