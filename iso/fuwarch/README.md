@@ -1,44 +1,41 @@
-# Fuwarch Linux — perfil do build ISO (Fase 1)
+# Fuwarch Linux — ISO build profile (Phase 1)
 
-Perfil `archiso` para construir a ISO do Fuwarch Linux. Derivado do
-`releng` oficial (archiso 89-1).
+`archiso` profile to build the Fuwarch Linux ISO. Derived from the official `releng` (archiso 89-1).
 
-## Estrutura
+## Structure
 
 ```
 iso/fuwarch/
-  profiledef.sh          # metadados da ISO (nome, label, publisher)
-  packages.x86_64        # pacotes que entram na ISO
-  pacman.conf            # pacman do build (core + extra + multilib)
-  airoootfs/             # arquivos copiados para o live ISO
-  efiboot/               # boot UEFI (systemd-boot)
-  grub/                  # boot BIOS (grub)
-  syslinux/              # boot BIOS legado (syslinux)
+  profiledef.sh          # ISO metadata (name, label, publisher)
+  packages.x86_64        # packages included in the ISO
+  pacman.conf            # build-time pacman (core + extra + multilib)
+  airootfs/              # files copied into the live ISO
+  efiboot/               # UEFI boot (systemd-boot)
+  grub/                  # BIOS boot (GRUB)
+  syslinux/              # Legacy BIOS boot (syslinux)
+  usr/                   # extra files for the live environment
 ```
 
-## Build (precisa de root)
+## Build (requires root)
 
-```
+```bash
 sudo mkarchiso -v -w /tmp/fuwarch-work -o /tmp/fuwarch-out iso/fuwarch
 ```
 
-Requisitos: pacote `archiso` instalado, sudo, ~30 GB livres e internet
-para baixar os pacotes.
+Requirements: `archiso` package installed, sudo, ~30 GB free space, and internet access to download packages.
 
-## O que já está neste perfil
+## What's in this profile
 
-- KDE Plasma + SDDM como desktop do live
-- Kernel `linux-zen` como padrão
-- Tema SDDM "Fuwarch Kawaii" em `/usr/share/sddm/themes/fuwarch-kawaii`
-- Live-user `fuwa` (senha `fuwa`) com autologin no SDDM
+- KDE Plasma + SDDM as the live desktop
+- `linux-zen` kernel as default
+- SDDM theme "Fuwarch Kawaii" at `/usr/share/sddm/themes/fuwarch-kawaii`
+- Live user `fuwa` (password `fuwa`) with SDDM autologin
 - zram-generator + BTRFS tools + snapper
-- `calamares` + configuração completa em
-  `airootfs/etc/calamares/` (branding `fuwarch`, QSS kawaii, módulos
-  welcome/locale/keyboard/users/partition/mount/summary/finished)
-- Multilib habilitado no `pacman.conf` do build
+- `calamares` + full configuration in `airootfs/etc/calamares/` (branding `fuwarch`, kawaii QSS, modules welcome/locale/keyboard/users/partition/mount/summary/finished)
+- Multilib enabled in build-time `pacman.conf`
 
-## Pendências (P-004, P-005, P-006 — ver 01_diretrizes_projeto.md)
+## Pending (P-004, P-005, P-006 — see `01_diretrizes_projeto.md`)
 
-- Infra do repo `fuwarch-core` (chaves de assinatura de pacotes)
-- Empacotamento da fonte M PLUS Rounded 1c
-- Arte real da Usami para o avatar do SDDM (atualmente wordmark "Fuwarch")
+- `fuwarch-core` repo infrastructure (package signing keys)
+- Packaging of M PLUS Rounded 1c font
+- Real Usami artwork for SDDM avatar (currently "Fuwarch" wordmark)

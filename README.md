@@ -1,34 +1,35 @@
 # Fuwarch Linux 🐰
 
-Distribuição Linux **baseada em Arch** para o público otaku.
-Fuwa fuwa (ふわふわ) + Arch. Rolling release puro, KDE Plasma + Hyprland,
-estética kawaii (Catppuccin Mocha), mascote **Usami**.
+<p align="center">
+  <img src="iso/fuwarch/airootfs/etc/calamares/branding/fuwarch/welcome.png" alt="Fuwarch Linux logo" width="200"/>
+</p>
 
-> **Status:** Fase 0 — Fundação. Nenhuma ISO lançada.
+**Arch-based** Linux distribution for the otaku audience. Fuwa fuwa (ふわふわ) + Arch. Pure rolling release, KDE Plasma + Hyprland, kawaii aesthetic (Catppuccin Mocha), mascot **Usami**.
 
-## Documentação (fonte da verdade)
+> **Status:** Phase 0 — Foundation. No ISO released yet.
 
-| Arquivo | Conteúdo |
-|---|---|
-| [`01_diretrizes_projeto.md`](01_diretrizes_projeto.md) | Escopo, identidade visual, público, recursos, ADRs, licenças |
-| [`02_passos_executados.md`](02_passos_executados.md) | Log cronológico de tudo que foi feito e testado |
-| [`03_erros_e_solucoes.md`](03_erros_e_solucoes.md) | Bugs/quebras e soluções exatas |
-| [`04_guia_para_agentes.md`](04_guia_para_agentes.md) | Estado atual + protocolo de handoff entre IAs |
+## Documentation (source of truth)
 
-## Protótipos
+| File | Content |
+|------|---------|
+| [`01_diretrizes_projeto.md`](01_diretrizes_projeto.md) | Scope, visual identity, audience, resources, ADRs, licenses |
+| [`02_passos_executados.md`](02_passos_executados.md) | Chronological log of everything done and tested |
+| [`03_erros_e_solucoes.md`](03_erros_e_solucoes.md) | Bugs/breakages and exact solutions |
+| [`04_guia_para_agentes.md`](04_guia_para_agentes.md) | Current state + IA handoff protocol |
+| [`iso/fuwarch/README.md`](iso/fuwarch/README.md) | `archiso` build profile for the Fuwarch live ISO |
 
-- [`prototypes/kde/`](prototypes/kde/) — tema "Fuwarch Kawaii Mocha" para
-  KDE Plasma (esquema de cores + Konsole).
+## Prototypes
 
-## Licenças
+- [`prototypes/kde/`](prototypes/kde/) — "Fuwarch Kawaii Mocha" theme for KDE Plasma (color scheme + Konsole).
+- [`prototypes/sddm/`](prototypes/sddm/) — "Fuwarch Kawaii" SDDM theme.
+- [`prototypes/terminal/`](prototypes/terminal/) — Starship prompt config.
 
-- **Código:** MIT (GPLv3 quando derivado de código GPL).
-- **Assets da Usami** (artes, mascote, wallpapers): © Rukafuu, **CC BY-NC-ND 4.0**.
-  Distribuição livre permitida; uso comercial e derivações proibidos.
-- Temas de terceiros (Catppuccin, Tela Circle, etc.) mantêm licenças originais.
+## Licenses
 
-## Postura legal
+- **Code:** MIT (GPLv3 when derived from GPL code).
+- **Usami assets** (artwork, mascot, wallpapers): © Rukafuu, **CC BY-NC-ND 4.0**. Free distribution allowed; commercial use and derivatives prohibited.
+- Third-party themes (Catppuccin, Tela Circle, etc.) keep their original licenses.
 
-Nenhuma ferramenta de pirataria nos repositórios oficiais do projeto.
-Fuwarch Linux não é afiliado à Arch Linux. Isenção de responsabilidade
-completa no futuro site/ISO.
+## Legal stance
+
+No piracy tools in official project repositories. Fuwarch Linux is not affiliated with Arch Linux. Full disclaimer on the future website/ISO.
